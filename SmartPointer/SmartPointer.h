@@ -1,19 +1,21 @@
 #ifndef SMARTPOINTER_H_
 #define SMARTPOINTER_H_
 
-template<typedef T>
+template<typename T>
 class SmartPointer
 {
 private:
 	T* m_pointer;
+	int referenceCount;
 public:
 	SmartPointer();
-	SmartPointer(const T* pointer);
+	SmartPointer(T* pointer);
 	T& operator*();
 	T* operator->();
-	bool operator==();
-	bool operator!=();
+	void operator=(SmartPointer<T>& obj);
+	bool operator==(SmartPointer<T>& obj);
+	bool operator!=(SmartPointer<T>& obj);
 	~SmartPointer();
-}
+};
 
 #endif
